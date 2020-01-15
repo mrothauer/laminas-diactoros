@@ -695,4 +695,5 @@ class Uri implements UriInterface
     {
         return rawurlencode($matches[0]);
     }
+
 }
