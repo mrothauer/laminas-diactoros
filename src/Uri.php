@@ -21,7 +21,6 @@ use function is_numeric;
 use function is_object;
 use function is_string;
 use function ltrim;
-use function mb_strtolower;
 use function parse_url;
 use function preg_match;
 use function preg_replace;
@@ -317,7 +316,7 @@ class Uri implements UriInterface
         }
 
         $new = clone $this;
-        $new->host = mb_strtolower($host);
+        $new->host = strtolower($host);
 
         return $new;
     }
@@ -463,7 +462,7 @@ class Uri implements UriInterface
 
         $this->scheme    = isset($parts['scheme']) ? $this->filterScheme($parts['scheme']) : '';
         $this->userInfo  = isset($parts['user']) ? $this->filterUserInfoPart($parts['user']) : '';
-        $this->host      = isset($parts['host']) ? mb_strtolower($parts['host']) : '';
+        $this->host      = isset($parts['host']) ? strtolower($parts['host']) : '';
         $this->port      = isset($parts['port']) ? $parts['port'] : null;
         $this->path      = isset($parts['path']) ? $this->filterPath($parts['path']) : '';
         $this->query     = isset($parts['query']) ? $this->filterQuery($parts['query']) : '';
